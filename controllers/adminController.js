@@ -30,7 +30,7 @@ const login = async(req,res)=>{
             })         
         }else{
             console.log("admin not found");
-            return res.status(401).json({ message: "Admin not found" });
+            return res.status(200).json({ message: "Admin not found" });
         }
 
     } catch (error) {
@@ -94,7 +94,7 @@ const userStatus = async (req,res) => {
       const currentUser = await user.findOne({ email: email });
   
       if (!currentUser) {
-        return res.status(404).json({ message: "User not found" });
+        return res.status(200).json({ message: "User not found" });
       }
   
       const newStatus = !currentUser.status;
@@ -128,7 +128,7 @@ const employerStatus = async(req,res)=>{
         const currentUser = await employer.findOne({ email: email });
 
         if (!currentUser) {
-          return res.status(404).json({ message: "User not found" });
+          return res.status(200).json({ message: "User not found" });
         }
     
         const newStatus = !currentUser.status;
@@ -162,7 +162,7 @@ const jobStatus = async(req,res)=>{
         const currentJob = await job.findOne({ _id: id });
 
         if (!currentJob) {
-          return res.status(404).json({ message: "Job not found" });
+          return res.status(200).json({ message: "Job not found" });
         }
     
         const newStatus = !currentJob.status;
@@ -201,7 +201,6 @@ const fetchCardDatas = async (req, res) => {
 
 const fetchAmounts = async(req,res)=>{
   try {
-    console.log("koo");
     const employers  = await employer.find({})
     const plansData = employers.map((employer) => {
       return employer.plans;
