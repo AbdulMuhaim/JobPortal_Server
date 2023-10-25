@@ -12,7 +12,6 @@ const accessChat = async (req, res) => {
         if (!id) {
             return res.status(400).send('Bad Request');
         }
-
         let employeeId;
         let employerId;
 

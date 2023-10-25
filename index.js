@@ -13,7 +13,7 @@ const chatController = require('./controllers/chatController')
 const app= express()
 
 app.use(cors({
-    origin:[process.env.FRONT_END_URL],
+    origin:"*",
     methods:["GET","POST","PATCH","DELETE"],
     credentials:true,
 
