@@ -12,12 +12,13 @@ const chatController = require('./controllers/chatController')
 
 const app= express()
 
-app.use(cors({
-    origin:[process.env.FRONT_END_URL],
-    methods:["GET","POST","PATCH","DELETE"],
-    credentials:true,
-}))
+const corsOptions = {
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
 
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -27,6 +28,7 @@ app.use('/employer',employerRoutes)
 app.use('/admin',adminRoutes)
 
 connectDatabase()
+
 
 const PORT = process.env.PORT
 
